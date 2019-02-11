@@ -1,0 +1,5 @@
+LR0 4;
+STR 14;
+PRT 14;
+BEL;
+HAL;
