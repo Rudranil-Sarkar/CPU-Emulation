@@ -31,6 +31,4 @@ HAL            | Stop execution
 Navigate to the src dir then
 ~~~
 g++ --std=c++11 cpu.cpp memory.cpp CodeParser.cpp Application.cpp
-
-~~~
 ./`name of the binary` `<path_to_program>`
