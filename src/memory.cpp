@@ -3,13 +3,18 @@
 namespace emulator
 {
 	Memory::Memory()
-	: MAX_ADDRESS(255), m_Memory(new Byte[MAX_ADDRESS]) { clear(); }
+		: MAX_ADDRESS(255), m_Memory(new Byte[MAX_ADDRESS])
+	{
+	}
 
-	Memory::~Memory() { delete[] m_Memory; m_Memory = nullptr; }
+	Memory::~Memory() 
+	{ 
+		if (m_Memory != nullptr) { delete[] m_Memory; m_Memory = nullptr; }
+	}
 
 	void Memory::clear()
 	{
-		for(int i = 0; i < MAX_ADDRESS; i++)
+		for(Byte i = 0; i < MAX_ADDRESS; i++)
 			m_Memory[i] = 0;
 	}
 
@@ -19,7 +24,7 @@ namespace emulator
 	
 	void Memory::Dump()
 	{
-		for(int i = 0; i < MAX_ADDRESS; i++)
-			std::cout << "[" << i << "]" << " ===> " << (int)Read(i) << std::endl;
+		for(Byte i = 0; i < MAX_ADDRESS; i++)
+			std::cout << "[ " << (int)i << " ]" << " ===> " << (int)Read(i) << std::endl;
 	}	
 }

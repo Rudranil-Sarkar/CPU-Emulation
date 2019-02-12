@@ -2,8 +2,12 @@
 
 namespace emulator {
 
-	CodeParser::CodeParser(Memory * mem, Byte offset, const char* filepath)
-		: m_Offset(offset), m_Counter(0), m_Mem(mem)
+	CodeParser::CodeParser(Memory * mem, Byte offset)
+		: m_Offset(offset), 
+		  m_Counter(0),
+		  m_Mem(mem) {}
+
+	void CodeParser::loadFile(const char* filepath)
 	{
 		std::ifstream file;
 		std::string line;
@@ -12,9 +16,10 @@ namespace emulator {
 
 		if(file.is_open())
 		{
-			while(getline(file, line))
-				parse(line);
+			while(getline(file, line)) { parse(line); }
 		}
+
+		file.close();
 	}
 
 	void CodeParser::parse(std::string line)
@@ -46,7 +51,7 @@ namespace emulator {
 		else if (op == "CP0") { load(COPY0); }
 		else if (op == "CP1") { load(COPY1); }
 		else if (op == "BEL") { load(BEEP); }
-		else { std::cout << ":: Invalid code quiting" << std::endl; exit(3); }
+		else { std::cout << ":: Invalid code quiting" << std::endl; }
 	}
 
 	void CodeParser::load(Byte b)
