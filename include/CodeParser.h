@@ -11,15 +11,16 @@ namespace emulator {
 	class CodeParser
 	{
 		private:
-			const Byte m_Offset;
+			Byte m_Offset;
 			Byte m_Counter;
-			Memory * m_Mem;
+			Memory* m_Mem;
 
 		public:
-			CodeParser(Memory * mem, Byte offset, const char* filepath);
+			CodeParser(Memory * mem, Byte offset);
+			void loadFile(const char * filepath);
 		
 		private:
-			void parse(std::string line);
+			void parse(std::string& line);
 			void load(Byte b);
 	};
 }

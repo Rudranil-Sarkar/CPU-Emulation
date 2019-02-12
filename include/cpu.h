@@ -27,7 +27,7 @@ namespace emulator
 		public:
 			/* The cpu constructor gonna take a memory object
 			   This way the we can use multiple cpus in a same program */
-			CPU(Memory * mem);
+			CPU(emulator::Memory * mem);
 			~CPU();
 
 			void Run();
