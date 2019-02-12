@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 
 	std::cout << ":: The cpu is Running" << std::endl;
 
-	memory -> Dump();
+	//memory -> Dump();
 
 	cpu->Run();
 
