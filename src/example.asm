@@ -1,5 +1,8 @@
-LR0 4;
+LD0 12;
+LD1 13;
+ADD;
 STR 14;
 PRT 14;
-BEL;
 HAL;
+-111;
+-6;

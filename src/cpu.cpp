@@ -116,11 +116,23 @@ namespace emulator
 	void CPU::lodr0()
 	{
 		Reg0 = p_Memory -> Read(ProgramCounter); 
+
+		if((char) Reg0 < 0)
+			Signed = true;
+		else
+			Signed = false;
+
 		ProgramCounter++;
 	}
 	void CPU::lodr1()
 	{
 		Reg1 = p_Memory -> Read(ProgramCounter);
+		
+		if((char)Reg1 < 0)
+			Signed = true;
+		else
+			Signed = false;
+
 		ProgramCounter++;
 	}
 
@@ -130,6 +142,11 @@ namespace emulator
 		ProgramCounter++;
 
 		Reg0 = p_Memory -> Read(Reg0);
+
+			if((char) Reg0 < 0)
+				Signed = true;
+			else
+				Signed = false;
 	}
 	void CPU::load1()
 	{
@@ -137,16 +154,32 @@ namespace emulator
 		ProgramCounter++;
 
 		Reg1 = p_Memory -> Read(Reg1);
+
+		if((char) Reg1 < 0)
+			Signed = true;
+		else
+			Signed = false;
 	}
 
 	void CPU::add()
 	{
 		Reg0 = Reg0 + Reg1;
+		
+		if((char) Reg0 < 0)
+			Signed = true;
+		else
+			Signed = false;
 	}
 
 	void CPU::store()
 	{
 		Reg1 = fetch();
+
+		if((char)Reg0 < 0)
+			Signed = true;
+		else
+			Signed = false;
+		
 		p_Memory -> Write(Reg1, Reg0);
 	}
 
@@ -155,7 +188,10 @@ namespace emulator
 		Reg1 = p_Memory -> Read(ProgramCounter);
 		Reg0 = p_Memory -> Read(Reg1);
 
-		std::cout << "------> " << (int)Reg0 << std::endl;
+		if(!Signed)
+			std::cout << "------> " << (int)Reg0 << std::endl;
+		else
+			std::cout << "------> " << (int)(char)Reg0 << std::endl;
 
 		ProgramCounter++;
  	}

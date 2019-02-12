@@ -25,6 +25,6 @@ namespace emulator
 	void Memory::Dump()
 	{
 		for(Byte i = 0; i < MAX_ADDRESS; i++)
-			std::cout << "[ " << (int)i << " ]" << " ===> " << (int)Read(i) << std::endl;
+			std::cout << "[ " << (int)i << " ]" << " ===> " << (int)(char)Read(i) << std::endl;
 	}	
 }

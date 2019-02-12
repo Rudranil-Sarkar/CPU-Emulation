@@ -16,18 +16,22 @@ namespace emulator {
 
 		if(file.is_open())
 		{
-			while(getline(file, line)) { parse(line); }
+			while(getline(file, line)) 
+				{
+					line = line.substr(0, line.find(";") + 1); 	 // To take of the whitespaces in the Assembly file
+					parse(line); 
+				}
 		}
 
 		file.close();
 	}
 
-	void CodeParser::parse(std::string line)
+	void CodeParser::parse(std::string& line)
 	{
 		std::string op;
 		std::string addr;
 
-		if(line.length() < 4)
+		if(line.length() < 4 || line[0] == '-')
 		{
 			load(std::stoi(line.substr(0, line.find(';'))));
 			return;
