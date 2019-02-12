@@ -16,11 +16,10 @@ namespace emulator {
 			Memory * m_Mem;
 
 		public:
-			CodeParser(Memory * mem, Byte offset, std::string filepath);
+			CodeParser(Memory * mem, Byte offset, const char* filepath);
 		
 		private:
 			void parse(std::string line);
 			void load(Byte b);
-		
 	};
 }

@@ -2,13 +2,13 @@
 
 namespace emulator {
 
-	CodeParser::CodeParser(Memory * mem, Byte offset, std::string filepath)
+	CodeParser::CodeParser(Memory * mem, Byte offset, const char* filepath)
 		: m_Offset(offset), m_Counter(0), m_Mem(mem)
 	{
 		std::ifstream file;
 		std::string line;
 
-		file.open(filepath);
+		file.open(filepath, std::ifstream::in);
 
 		if(file.is_open())
 		{

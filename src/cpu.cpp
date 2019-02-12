@@ -10,7 +10,8 @@ namespace emulator
 
 	CPU::~CPU()
 	{
-		p_Memory = nullptr;
+		if(p_Memory != nullptr)
+			p_Memory = nullptr;
 	}
 
 	void CPU::Run()

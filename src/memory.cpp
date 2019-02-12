@@ -5,7 +5,7 @@ namespace emulator
 	Memory::Memory()
 	: MAX_ADDRESS(255), m_Memory(new Byte[MAX_ADDRESS]) { clear(); }
 
-	Memory::~Memory() { delete[] m_Memory; }
+	Memory::~Memory() { delete[] m_Memory; m_Memory = nullptr; }
 
 	void Memory::clear()
 	{
